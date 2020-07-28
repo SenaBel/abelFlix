@@ -23,3 +23,11 @@ body {
 a {
   color: inherit;
 } 
+
+/* Fazendo o Footer ficar embaixo da template */
+#root {
+  min-height: calc(100vh - var(--bodyPaddingTop)) ;
+  display: flex;
+  flex-direction: column;
+  
+}
