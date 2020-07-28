@@ -6,16 +6,16 @@ import Button from '../styledComponents/Button'
 
 import './menu.css'
 
-const Menu = () => {
+const Menu = ({esconderButton}) => {
     return (
         <nav className="Menu">
             <Link to="/">
             <img className="Logo" src={Logo} alt="abelFlix logo" />
             </Link>
 
-            <Button as={Link} className="ButtonLink" to="/cadastro/video">
+          { esconderButton && <Button as={Link} className="ButtonLink" to="/cadastro/video"> 
                 Novo Video
-            </Button>
+            </Button> }
 
         </nav>
     );

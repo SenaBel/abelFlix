@@ -18,7 +18,7 @@ const Main = styled.main `
 const PageDefault = ({children}) => {  // na props do children fiz um destruction
     return (
         <>
-            <Menu />
+            <Menu  esconderButton ={false}/>
             <Main>
                 {children}
             </Main>
@@ -29,4 +29,6 @@ const PageDefault = ({children}) => {  // na props do children fiz um destructio
 };
 
 export default PageDefault;
+
+
 

@@ -8,7 +8,7 @@ import Carousel from '../../components/Carousel'
 function Home() {
   return (
     <div style={{background: "#141414"}}>
-      <Menu />
+      <Menu esconderButton={true} />
       
       <BannerMain 
         videoTitle = {dadosIniciais.categorias[0].videos[0].titulo}
