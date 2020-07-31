@@ -4,7 +4,7 @@ import PageDefault from '../../../components/pageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/styledComponents/Button';
 
-function CadastroCategoria() {
+function CadastroCategoria(){
   const valoresIniciais = {
     nome: '',
     descricao: '',
@@ -25,23 +25,23 @@ function CadastroCategoria() {
     setValue(
       infosDoEvento.target.getAttribute('name'),
       infosDoEvento.target.value,
-    );
+  );
   }
 
   // usamos o useEffect quando desejamos que um efeito colateral aconteça
   useEffect(() => {
-    if (window.location.href.includes('localhost')) {
-      const URL = 'https://dev-sena-flix.herokuapp.com/categorias';
-      fetch(URL).then(async (respostaDoServer) => {
-        if (respostaDoServer.ok) {
-          const resposta = await respostaDoServer.json();
-          setCategorias(resposta);
-          return;
-        }
-        throw new Error('Não foi possível pegar os dados');
+    const URL_TOP = window.location.hostname.includes('localhost')
+    ? 'http://localhost:8080/categorias'
+    : 'https://dev-sena-flix.herokuapp.com/categorias';
+    
+      fetch(URL_TOP)
+      .then(async (respostaDoServer) => {
+        const resposta = await respostaDoServer.json();
+        setCategorias([
+          ...resposta,
+        ]);
       });
-    }
-  }, []);
+    }, [] )
 
   return (
     <PageDefault>
@@ -73,18 +73,7 @@ function CadastroCategoria() {
           value={values.descricao}
           onChange={handleChange}
         />
-        {/* <div>
-          <label>
-            Descrição:
-            <textarea
-              type="text"
-              value={values.descricao}
-              name="descricao"
-              onChange={handleChange}
-            />
-          </label>
-        </div> */}
-
+        
         <FormField
           label="Cor"
           type="color"
@@ -92,18 +81,7 @@ function CadastroCategoria() {
           value={values.cor}
           onChange={handleChange}
         />
-        {/* <div>
-          <label>
-            Cor:
-            <input
-              type="color"
-              value={values.cor}
-              name="cor"
-              onChange={handleChange}
-            />
-          </label>
-        </div> */}
-
+        
         <Button>Cadastrar</Button>
       </form>
 
@@ -117,5 +95,4 @@ function CadastroCategoria() {
     </PageDefault>
   );
 }
-
 export default CadastroCategoria;
