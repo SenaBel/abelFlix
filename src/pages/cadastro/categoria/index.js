@@ -31,7 +31,7 @@ function CadastroCategoria() {
   // usamos o useEffect quando desejamos que um efeito colateral aconteça
   useEffect(() => {
     if (window.location.href.includes('localhost')) {
-      const URL = 'http://localhost:8080/categorias';
+      const URL = 'https://dev-sena-flix.herokuapp.com/categorias';
       fetch(URL).then(async (respostaDoServer) => {
         if (respostaDoServer.ok) {
           const resposta = await respostaDoServer.json();
